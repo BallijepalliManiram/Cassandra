@@ -46,5 +46,5 @@
 	It applies to similar type of logic to distributed systems means it can deliver only two of three desired characteristics.
 
 # Installation Steps for Cassandra:
-	
+	https://phoenixnap.com/kb/install-cassandra-on-windows
  	
