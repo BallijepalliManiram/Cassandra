@@ -40,7 +40,10 @@
 	3. **Partition Tolerance:**
 		i. A partition is a communications break within a distributed system—a lost or temporarily delayed connection between two nodes. 
 		ii. Partition tolerance means that the cluster must continue to work despite any number of communication breakdowns between nodes in the system.
-		
+**What is the CAP Theorem?**
+- A distributed system always needs to be partition tolerant, we shouldn’t be making a system where a network partition brings down the whole system.
+  So, a distributed system is always built Partition Tolerant.
+  So, In simple words, CAP theorem means if there is network partition and if you want your system to keep functioning you can provide either Availability or Consistency and not both.
 - It applies to similar type of logic to distributed systems means it can deliver only two of three desired characteristics.
 
 # Installation Steps for Cassandra:
