@@ -47,6 +47,16 @@
 	3. So, In simple words, CAP theorem means if there is network partition and if you want your system to keep functioning you can provide either Availability or Consistency and not both.
 - It applies to similar type of logic to distributed systems means it can deliver only two of three desired characteristics.
 
+# Architecture:
+- The design goal of Cassandra is to handle big data workloads across multiple nodes without any single point of failure. 
+- The Cassandra follows peer-to-peer architecture
+- It is a distributed system across its nodes, and data is distributed among all the nodes in a cluster.
+- The following are the some points :
+	1. All the nodes in a cluster play the same role. 
+	2. Each node is independent and at the same time interconnected to other nodes.
+	3. Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
+	4. When a node goes down, read/write requests can be served from other nodes in the network.
+
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
  	
