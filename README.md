@@ -30,7 +30,7 @@
 	6. **Transaction support** − Cassandra supports properties like Atomicity, Consistency, Isolation, and Durability (ACID).
 	7. **Fast writes** − Cassandra was designed to run on cheap commodity hardware. It performs blazingly fast writes and can store hundreds of terabytes of data, without sacrificing the read efficiency.
 # CAP Theorem:
-- This theorem states that based on the three characteristics:
+- CAP stands for Consistency, Availability and Partition Tolerance.
 	1. **Consistency:**
 		i. Consistency means that all clients see the same data at the same time, no matter which node they connect to. 
 		ii. For this to happen, whenever data is written to one node, it must be instantly forwarded or replicated to all the other nodes in the system before the write is deemed successful.
