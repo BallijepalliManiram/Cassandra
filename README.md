@@ -63,15 +63,15 @@
  	
 # How to write and read the data in cassandra
 - Here the data will write in the cassandra by the following terminology:
-	1. Coordinator:
-		a. In cssandra we have nodes and one of these nodes will treat as a coordinator.
-		b. It will write the data to the paritucular node and it will also read from the node.
-	2. Partitioner:
-		a. It is the component responsible for determining how to distribute the data across the nodes in the cluster given the partition key of a row.
-		b. Here for each node in the Cassandra cluster (Cassandra ring) is assigned a range of tokens and the token ranges is 64 bit integers i.e.., -2^63 to +2^63 - 1
-	3. Tokens:
-		a. Based on this token value the coordinator will write the data into the node.
-		b. This token value will generate by the hashcode. 
-	4. Replication Factor:
-		a. It tells that how many copies should be create in the cluster.
+	1. **Coordinator:**
+		1. In cssandra we have nodes and one of these nodes will treat as a coordinator.
+		2. It will write the data to the paritucular node and it will also read from the node.
+	2. **Partitioner:**
+		1. It is the component responsible for determining how to distribute the data across the nodes in the cluster given the partition key of a row.
+		2. Here for each node in the Cassandra cluster (Cassandra ring) is assigned a range of tokens and the token ranges is 64 bit integers i.e.., -2^63 to +2^63 - 1
+	3. **Tokens:**
+		1. Based on this token value the coordinator will write the data into the node.
+		2. This token value will generate by the hashcode. 
+	4. **Replication Factor:**
+		1. It tells that how many copies should be create in the cluster.
 - From the node the coordinatoe will read the data and sends back to client.
