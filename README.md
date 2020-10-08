@@ -56,7 +56,23 @@
 	2. Each node is independent and at the same time interconnected to other nodes.
 	3. Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
 	4. When a node goes down, read/write requests can be served from other nodes in the network.
+- This will explain in the following ppt file path:
 
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
  	
+# How to write and read the data in cassandra
+- Here the data will write in the cassandra by the following terminology:
+	1. **Coordinator:**
+		1. In cssandra we have nodes and one of these nodes will treat as a coordinator.
+		2. It will write the data to the paritucular node and it will also read from the node.
+	2. **Partitioner:**
+		1. It is the component responsible for determining how to distribute the data across the nodes in the cluster given the partition key of a row.
+		2. Here for each node in the Cassandra cluster (Cassandra ring) is assigned a range of tokens and the token ranges is 64 bit integers i.e.., -2^63 to +2^63 - 1
+	3. **Tokens:**
+		1. Based on this token value the coordinator will write the data into the node.
+		2. This token value will generate by the hashcode. 
+	4. **Replication Factor:**
+		1. It tells that how many copies should be create in the cluster.
+- From the node the coordinatoe will read the data and sends back to client.
+- This will explain in the following ppt file path:
