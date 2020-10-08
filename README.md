@@ -56,7 +56,7 @@
 	2. Each node is independent and at the same time interconnected to other nodes.
 	3. Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
 	4. When a node goes down, read/write requests can be served from other nodes in the network.
-- This will example in the following ppt file path:
+- This will explain in the following ppt file path:
 
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
@@ -75,3 +75,4 @@
 	4. **Replication Factor:**
 		1. It tells that how many copies should be create in the cluster.
 - From the node the coordinatoe will read the data and sends back to client.
+- This will explain in the following ppt file path:
