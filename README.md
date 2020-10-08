@@ -80,3 +80,22 @@
 	2. Based on the Consistency Factor the coordinator will reads the data from the node.
 - This will explain in the following ppt file path:
 	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Writting%20and%20Reading%20the%20data.pptx**
+	
+# Replication,Datacentres and Racks:
+- **Replication**:
+	1. Cassandra stores replicas on multiple nodes to ensure reliability and fault tolerance. 
+	2. A replication strategy determines the nodes where replicas are placed.
+	3. The total number of replicas across the cluster is referred to as the replication factor.
+-  **Replication Stategy**:
+	1.Basically, the coordinator uses the Replication Strategy to find out which nodes will be the replica nodes for a given request.
+	2. There are two replication strategies available:
+		1. **SimpleStrategy:** 
+			1. It is used for a single data center deployment (not recommended for production environment). 
+			2. Basically, it just takes the partitioner’s decision and places the remaining replicas clockwise in relation to this node. 
+		2. **NetworkTopologyStrategy:** 
+			1. It is used for multiple data centers deployment (recommended for production environment). 
+			2. It also takes the partitioner’s decision and places the remaining replicas clockwise, but it also takes into consideration the rack and data centers configuration.
+- **DataCenter & Racks:**
+	1. In Cassandra, we have many datacenters based on the different region.
+	2. In that datacenters we have racks.
+![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
