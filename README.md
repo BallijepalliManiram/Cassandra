@@ -71,8 +71,10 @@
 		2. Here for each node in the Cassandra cluster (Cassandra ring) is assigned a range of tokens and the token ranges is 64 bit integers i.e.., -2^63 to +2^63 - 1
 	3. **Tokens:**
 		1. Based on this token value the coordinator will write the data into the node.
-		2. This token value will generate by the hashcode. 
+		2. This token value will generate based upon the partition key. 
 	4. **Replication Factor:**
 		1. It tells that how many copies should be create in the cluster.
-- From the node the coordinatoe will read the data and sends back to client.
+- From the node the coordinatoe will read the data and sends back to client ans Follows:
+	1. Based on the Replication Factor the coordinator will writes the data into the node.
+	2. Based on the Consistency Factor the coordinator will reads the data from the node.
 - This will explain in the following ppt file path:
