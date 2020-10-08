@@ -57,6 +57,7 @@
 	3. Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
 	4. When a node goes down, read/write requests can be served from other nodes in the network.
 - This will explain in the following ppt file path:
+	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Cassandra%20Architecture.pptx**
 
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
@@ -78,3 +79,4 @@
 	1. Based on the Replication Factor the coordinator will writes the data into the node.
 	2. Based on the Consistency Factor the coordinator will reads the data from the node.
 - This will explain in the following ppt file path:
+	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Writting%20and%20Reading%20the%20data.pptx**
