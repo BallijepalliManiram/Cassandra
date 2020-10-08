@@ -60,3 +60,9 @@
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
  	
+# How to store the data into cassandra
+- Here the data will store in the cassandra by the following terminology:
+	1. Coordinator
+	2. Partitioner
+	3. Tokens
+	4. Replication Factor
