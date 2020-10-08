@@ -100,3 +100,7 @@
 	2. In that datacenters we have racks.
 	
 - ![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
+- To know in which datacenter and rack the cassandra running the following command is used:
+	**nodetool status**
+	1. To use this command we have to start cassandra server.
+	2. Here the datacenter and rack will config in the path like : **C:\Cassandra\apache-cassandra-3.11.8\conf\cassandra-rackdc.properties**
