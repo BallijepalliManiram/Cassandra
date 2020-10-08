@@ -98,4 +98,5 @@
 - **DataCenter & Racks:**
 	1. In Cassandra, we have many datacenters based on the different region.
 	2. In that datacenters we have racks.
-![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
+	
+- ![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
