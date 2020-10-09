@@ -181,7 +181,7 @@
 	3. Whatever you pass to this method in string format will be executed on the cqlsh.
 	4. In the following example, we are creating a table named emp. 
 	5. You have to store the query in a string variable and pass it to the execute() method as shown below.
-		1. **String query = "CREATE TABLE emp(emp_id int PRIMARY KEY, " + "emp_name text, " + "emp_city text, " + "emp_sal varint, " + "emp_phone varint );";
+		1. **String query = "CREATE TABLE emp(emp_id int PRIMARY KEY, " + "emp_name text, " + "emp_city text, " + "emp_sal varint, " + "emp_phone varint );";**
 		1. **session.execute(query);**
 # Dependencies For Maven
 	<dependency>
