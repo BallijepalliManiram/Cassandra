@@ -111,13 +111,27 @@
 - In cluster we have only one keyspace per one node.
 - In this we can create,alter and delete the keyspace by the following commands:
   # Create Keyspace:
-  	It is used to create the keyspace with replication strategy and replication_factor.
 		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};
 		
 		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND durable_writes = ‘Boolean value’;
   # To see all created keyspaces:
-  	SELECT * FROM system_schema.keyspaces;
+  		SELECT * FROM system_schema.keyspaces;
   # If we want to use the existing keyspace:
-  	Syntax:USE <keyspace_name>
+  		Syntax:
+			USE <keyspace_name>
   # Alter Keyspace:
-  
+  		ALTER KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND DURABLE_WRITES = true;
+  # Drop Keyspace:
+  		Syntax:
+			DROP KEYSPACE <identifier>
+  # Create Table:
+  		cqlsh> USE tutorialspoint;
+		cqlsh:tutorialspoint>; CREATE TABLE emp(
+   			emp_id int PRIMARY KEY,
+   			emp_name text,
+   			emp_city text,
+   			emp_sal varint,
+   			emp_phone varint
+   		);
+   # If we want to see the table :
+			cqlsh:tutorialspoint> select * from <table_name>;
