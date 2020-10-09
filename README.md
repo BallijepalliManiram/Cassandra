@@ -82,12 +82,12 @@
 	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Writting%20and%20Reading%20the%20data.pptx**
 	
 # Replication,Datacentres and Racks:
-- **Replication**:
+- **Replication:**
 	1. Cassandra stores replicas on multiple nodes to ensure reliability and fault tolerance. 
 	2. A replication strategy determines the nodes where replicas are placed.
 	3. The total number of replicas across the cluster is referred to as the replication factor.
--  **Replication Stategy**:
-	1.Basically, the coordinator uses the Replication Strategy to find out which nodes will be the replica nodes for a given request.
+-  **Replication Stategy:**
+	1. Basically, the coordinator uses the Replication Strategy to find out which nodes will be the replica nodes for a given request.
 	2. There are two replication strategies available:
 		1. **SimpleStrategy:** 
 			1. It is used for a single data center deployment (not recommended for production environment). 
@@ -100,3 +100,94 @@
 	2. In that datacenters we have racks.
 	
 - ![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
+- To know in which datacenter and rack the cassandra running the following command is used:
+	**nodetool status**
+	1. To use this command we have to start cassandra server.
+	2. Here the datacenter and rack will config in the path like : **C:\Cassandra\apache-cassandra-3.11.8\conf\cassandra-rackdc.properties**
+	
+# Keyspaces & Tables:
+- In general keyspace will looks like a schema in other databases.
+- In cassandra the keyspace will acts as a scheme with collection of tables.
+- In cluster we have only one keyspace per one node.
+- In this we can create,alter and delete the keyspace by the following commands:
+  # Create Keyspace:
+		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};
+		
+		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND durable_writes = ‘Boolean value’;  
+   # Alter Keyspace:
+  		ALTER KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND DURABLE_WRITES = true;
+  # Drop Keyspace:
+  		Syntax:
+			DROP KEYSPACE <identifier>
+  # To see all created keyspaces:
+  		SELECT * FROM system_schema.keyspaces;
+  # If we want to use the existing keyspace:
+  		Syntax:
+			USE <keyspace_name> 
+  # Create Table:
+  		cqlsh> USE tutorialspoint;
+		cqlsh:tutorialspoint>; CREATE TABLE emp(
+   			emp_id int PRIMARY KEY,
+   			emp_name text,
+   			emp_city text,
+   			emp_sal varint,
+   			emp_phone varint
+   		);
+   # Alter Table:
+   # Adding Column:
+   		Syntax
+			cqlsh> USE tutorialspoint;
+			cqlsh:tutorialspoint>ALTER TABLE table_name ADD  new column datatype;
+   # Drop Column: 
+   		Syntax
+			cqlsh> USE tutorialspoint;
+			cqlsh:tutorialspoint>ALTER table_name DROP column_name;
+   # Drop Table:
+   		Syntax
+			cqlsh> USE tutorialspoint;
+			cqlsh:tutorialspoint>DROP TABLE <table_name>
+   # Truncate Table:
+   		Syntax
+			cqlsh> USE tutorialspoint;
+			cqlsh:tutorialspoint>TRUNCATE <tablename>
+   # Create Index:
+   		cqlsh:tutorialspoint> CREATE INDEX name ON emp1 (emp_name);
+   # Drop Index:
+   		cqlsh:tp> drop index name;
+   # If we want to see the table :
+			cqlsh:tutorialspoint> select * from <table_name>;
+# How to use these commands by Java API:
+# Dependencies For Maven
+	<dependency>
+  		<groupId>com.datastax.cassandra</groupId>
+  		<artifactId>cassandra-driver-core</artifactId>
+  		<version>3.6.0</version>
+	</dependency>
+# The Following are the steps to execuste the code by java API:
+- You can create a table using the execute() method of Session class. Follow the steps given below to create a table using Java API.
+- **Step1: Create a Cluster Object**
+	1. First of all, create an instance of the Cluster.builder class of com.datastax.driver.core package as shown below.
+		1. Creating Cluster.Builder object.
+			1. **Cluster.Builder builder1 = Cluster.builder();**
+		2. Add a contact point (IP address of the node) using the addContactPoint() method of Cluster.Builder object. This method returns Cluster.Builder.
+			1. **Cluster.Builder builder2 = build.addContactPoint( "127.0.0.1" );**
+		3. Using the new builder object, create a cluster object. To do so, you have a method called build() in the Cluster.Builder class. The following code shows how to create a cluster object.
+			1. **Cluster cluster = builder.build();**
+		4. You can build a cluster object using a single line of code as shown below.
+			1. **Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();**
+- **Step 2: Create a Session Object**
+	1. Create an instance of Session object using the connect() method of Cluster class as shown below.
+		1. **Session session = cluster.connect( );**
+	2. This method creates a new session and initializes it. If you already have a keyspace, you can set it to the existing one by passing the keyspace name in string format to this method as shown below.
+		1. **Session session = cluster.connect(“ Your keyspace name ” );**
+	3. Here we are using the keyspace named tp. Therefore, create the session object as shown below.
+		1. **Session session = cluster.connect(“ tp” );**
+- **Step 3: Execute Query**
+	1. You can execute CQL queries using the execute() method of Session class. 
+	2. Pass the query either in string format or as a Statement class object to the execute() method. 
+	3. Whatever you pass to this method in string format will be executed on the cqlsh.
+	4. In the following example, we are creating a table named emp. 
+	5. You have to store the query in a string variable and pass it to the execute() method as shown below.
+		1. **String query = "CREATE TABLE emp(emp_id int PRIMARY KEY, " + "emp_name text, " + "emp_city text, " + "emp_sal varint, " + "emp_phone varint );";**
+		1. **session.execute(query);**
+
