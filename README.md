@@ -157,6 +157,13 @@
    # If we want to see the table :
 			cqlsh:tutorialspoint> select * from <table_name>;
 # How to use these commands by Java API:
+# Dependencies For Maven
+	<dependency>
+  		<groupId>com.datastax.cassandra</groupId>
+  		<artifactId>cassandra-driver-core</artifactId>
+  		<version>3.6.0</version>
+	</dependency>
+# The Following are the steps to execuste the code by java API:
 - You can create a table using the execute() method of Session class. Follow the steps given below to create a table using Java API.
 - **Step1: Create a Cluster Object**
 	1. First of all, create an instance of the Cluster.builder class of com.datastax.driver.core package as shown below.
@@ -183,9 +190,4 @@
 	5. You have to store the query in a string variable and pass it to the execute() method as shown below.
 		1. **String query = "CREATE TABLE emp(emp_id int PRIMARY KEY, " + "emp_name text, " + "emp_city text, " + "emp_sal varint, " + "emp_phone varint );";**
 		1. **session.execute(query);**
-# Dependencies For Maven
-	<dependency>
-  		<groupId>com.datastax.cassandra</groupId>
-  		<artifactId>cassandra-driver-core</artifactId>
-  		<version>3.6.0</version>
-	</dependency>
+
