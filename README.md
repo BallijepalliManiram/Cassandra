@@ -104,3 +104,12 @@
 	**nodetool status**
 	1. To use this command we have to start cassandra server.
 	2. Here the datacenter and rack will config in the path like : **C:\Cassandra\apache-cassandra-3.11.8\conf\cassandra-rackdc.properties**
+	
+# Keyspaces & Tables:
+- In general keyspace will looks like a schema in other databases.
+- In cassandra the keyspace will acts as a scheme with collection of tables.
+- In cluster we have only one keyspace per one node.
+- In this we can create,alter and delete the keyspace by the following commands:
+	1. Create Keyspace:
+		**CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};**
+		**CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND durable_writes = ‘Boolean value’;**
