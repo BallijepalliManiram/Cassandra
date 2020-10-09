@@ -110,6 +110,14 @@
 - In cassandra the keyspace will acts as a scheme with collection of tables.
 - In cluster we have only one keyspace per one node.
 - In this we can create,alter and delete the keyspace by the following commands:
-	1. Create Keyspace:
-		**CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};**
-		**CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND durable_writes = ‘Boolean value’;**
+  # Create Keyspace:
+  	It is used to create the keyspace with replication strategy and replication_factor.
+		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};
+		
+		CREATE KEYSPACE “KeySpace Name” WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of  replicas’} AND durable_writes = ‘Boolean value’;
+  # To see all created keyspaces:
+  	SELECT * FROM system_schema.keyspaces;
+  # If we want to use the existing keyspace:
+  	Syntax:USE <keyspace_name>
+  # Alter Keyspace:
+  
