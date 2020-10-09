@@ -82,12 +82,12 @@
 	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Writting%20and%20Reading%20the%20data.pptx**
 	
 # Replication,Datacentres and Racks:
-- **Replication**:
+- **Replication:**
 	1. Cassandra stores replicas on multiple nodes to ensure reliability and fault tolerance. 
 	2. A replication strategy determines the nodes where replicas are placed.
 	3. The total number of replicas across the cluster is referred to as the replication factor.
--  **Replication Stategy**:
-	1.Basically, the coordinator uses the Replication Strategy to find out which nodes will be the replica nodes for a given request.
+-  **Replication Stategy:**
+	1. Basically, the coordinator uses the Replication Strategy to find out which nodes will be the replica nodes for a given request.
 	2. There are two replication strategies available:
 		1. **SimpleStrategy:** 
 			1. It is used for a single data center deployment (not recommended for production environment). 
