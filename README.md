@@ -156,6 +156,16 @@
    		cqlsh:tp> drop index name;
    # If we want to see the table :
 			cqlsh:tutorialspoint> select * from <table_name>;
+# How the data will write and read in the node
+- we can save and get the data in the node by following 2 ways:
+   # Write Path:
+   - Every write activity of nodes is captured by the commit logs written in the nodes. 
+   - Later the data will be captured and stored in the mem-table. 
+   - Whenever the mem-table is full, data will be written into the SStable data file. 
+   - All writes are automatically partitioned and replicated throughout the cluster. 
+   - Cassandra periodically consolidates the SSTables, discarding unnecessary data.
+   # Read Path:
+   - During read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable that holds the required data.
 # How to use these commands by Java API:
 # Dependencies For Maven
 	<dependency>
