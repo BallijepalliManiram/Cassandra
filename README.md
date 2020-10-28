@@ -166,6 +166,35 @@
    - Cassandra periodically consolidates the SSTables, discarding unnecessary data.
    # Read Path:
    - During read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable that holds the required data.
+# Consistency
+- The Cassandra consistency level is defined as the minimum number of Cassandra nodes that must acknowledge a read or write operation before the operation can be considered successful. 
+- Different consistency levels can be assigned to different Edge keyspaces.
+-In this we have some levels:
+   # ANY:
+   - Writes/Reads must be written to at least one node.
+   # ONE:
+   - It must be written to the commit log and memtable of at least one replica node. 
+   - In this, we Need 1 node from the ANY DC to succeed.
+   # TWO:
+   - It must be written to the commit log and memtable of at least two replica nodes. 
+   - In this, we Need 2 nodes to the response from the ANY DC to succeed.
+   # THREE:
+   - It must be written to the commit log and memtable of at least three replica nodes. 
+   - In this, we Need 3 nodes to the response from the ANY DC to succeed.
+   # QUORUM:
+   - It must be written to the commit log and memtable on a quorum of replica nodes across all datacenters. 
+   - In this consistency level (n/2 +1) nodes to the response from ANY DC to succeed.
+   # To see what consistency level is applied for a particular table we have to type following command:
+      cqlsh:[keyspace]>consistency
+# Timestamp
+- It is used to get the data to know when the row in te table is created.
+   # For that we have to write command:
+    	select emp_company,salary,writetime(salary) from employeedetails;
+# TTL(Time-To-Leave):
+- It is used to tell that for how much time the row data should be available.
+   # Command:
+    	update employeedetails using ttl 30 set salary = 30000 where id=2 and emp_company = 'efftronics';
+# 
 # How to use these commands by Java API:
 # Dependencies For Maven
 	<dependency>
