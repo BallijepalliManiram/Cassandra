@@ -57,7 +57,7 @@
 	3. Each node in a cluster can accept read and write requests, regardless of where the data is actually located in the cluster.
 	4. When a node goes down, read/write requests can be served from other nodes in the network.
 - This will explain in the following ppt file path:
-	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Cassandra%20Architecture.pptx**
+	**https://github.com/BallijepalliManiram/Cassandra/blob/main/CassandraDatastaxDemo/pptfiles/Cassandra%20Architecture.pptx**
 
 # Installation Steps for Cassandra:
 [Click here for Installation Steps for cassandra in windows](https://phoenixnap.com/kb/install-cassandra-on-windows)
@@ -79,7 +79,7 @@
 	1. Based on the Replication Factor the coordinator will writes the data into the node.
 	2. Based on the Consistency Factor the coordinator will reads the data from the node.
 - This will explain in the following ppt file path:
-	**https://github.com/BallijepalliManiram/Cassandra/blob/main/files/Writting%20and%20Reading%20the%20data.pptx**
+	**https://github.com/BallijepalliManiram/Cassandra/blob/main/CassandraDatastaxDemo/pptfiles/Writting%20and%20Reading%20the%20data.pptx**
 	
 # Replication,Datacentres and Racks:
 - **Replication:**
@@ -99,7 +99,7 @@
 	1. In Cassandra, we have many datacenters based on the different region.
 	2. In that datacenters we have racks.
 	
-- ![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/images/DataCenters%20and%20Racks.PNG)
+- ![alt text](https://github.com/BallijepalliManiram/Cassandra/blob/main/CassandraDatastaxDemo/images/DataCenters%20and%20Racks.PNG)
 - To know in which datacenter and rack the cassandra running the following command is used:
 	**nodetool status**
 	1. To use this command we have to start cassandra server.
@@ -156,6 +156,16 @@
    		cqlsh:tp> drop index name;
    # If we want to see the table :
 			cqlsh:tutorialspoint> select * from <table_name>;
+# How the data will write and read in the node
+- we can save and get the data in the node by following 2 ways:
+   # Write Path:
+   - Every write activity of nodes is captured by the commit logs written in the nodes. 
+   - Later the data will be captured and stored in the mem-table. 
+   - Whenever the mem-table is full, data will be written into the SStable data file. 
+   - All writes are automatically partitioned and replicated throughout the cluster. 
+   - Cassandra periodically consolidates the SSTables, discarding unnecessary data.
+   # Read Path:
+   - During read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable that holds the required data.
 # How to use these commands by Java API:
 # Dependencies For Maven
 	<dependency>
