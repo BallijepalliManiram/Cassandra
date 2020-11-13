@@ -166,6 +166,77 @@
    - Cassandra periodically consolidates the SSTables, discarding unnecessary data.
    # Read Path:
    - During read operations, Cassandra gets values from the mem-table and checks the bloom filter to find the appropriate SSTable that holds the required data.
+# Consistency
+- The Cassandra consistency level is defined as the minimum number of Cassandra nodes that must acknowledge a read or write operation before the operation can be considered successful. 
+- Different consistency levels can be assigned to different Edge keyspaces.
+-In this we have some levels:
+   # ANY:
+   - Writes/Reads must be written to at least one node.
+   # ONE:
+   - It must be written to the commit log and memtable of at least one replica node. 
+   - In this, we Need 1 node from the ANY DC to succeed.
+   # TWO:
+   - It must be written to the commit log and memtable of at least two replica nodes. 
+   - In this, we Need 2 nodes to the response from the ANY DC to succeed.
+   # THREE:
+   - It must be written to the commit log and memtable of at least three replica nodes. 
+   - In this, we Need 3 nodes to the response from the ANY DC to succeed.
+   # QUORUM:
+   - It must be written to the commit log and memtable on a quorum of replica nodes across all datacenters. 
+   - In this consistency level (n/2 +1) nodes to the response from ANY DC to succeed.
+   # To see what consistency level is applied for a particular table we have to type following command:
+      cqlsh:[keyspace]>consistency
+# Timestamp
+- It is used to get the data to know when the row in te table is created.
+   # For that we have to write command:
+    	select emp_company,salary,writetime(salary) from employeedetails;
+# TTL(Time-To-Leave):
+- It is used to tell that for how much time the row data should be available.
+   # Command:
+    	update employeedetails using ttl 30 set salary = 30000 where id=2 and emp_company = 'efftronics';
+# Collections
+- CQL provides the facility of using Collection data types. 
+- Using these Collection types, you can store multiple values in a single variable.
+   # List
+   - List is used in the cases where
+	1. The order of the elements is to be maintained
+	2. The value is to be stored multiple times.
+   - You can get the values of a list data type using the index of the elements in the list.
+      # Creating a Table with List
+            cqlsh:tutorialspoint> CREATE TABLE data(name text PRIMARY KEY, email list<text>);
+      # Inserting Data into a List
+            cqlsh:tutorialspoint> INSERT INTO data(name, email) VALUES ('ramu',['abc@gmail.com','cba@yahoo.com']);
+      # Updating a List
+            cqlsh:tutorialspoint> UPDATE data SET email = email +['xyz@tutorialspoint.com'] where name = 'ramu';
+   # Set
+   - Set is a data type that is used to store a group of elements. 
+   - The elements of a set will be returned in a sorted order.
+      # Creating a Table with Set
+            cqlsh:tutorialspoint> CREATE TABLE data2 (name text PRIMARY KEY, phone set<varint>);
+      # Inserting Data into a Set
+            cqlsh:tutorialspoint> INSERT INTO data2(name, phone)VALUES ('rahman', {9848022338,9848022339});
+      # Updating a Set
+            cqlsh:tutorialspoint> UPDATE data2 SET phone = phone + {9848022330} where name = 'rahman';
+   # Map
+   - Map is a data type that is used to store a key-value pair of elements.
+      # Creating a Table with Map
+            cqlsh:tutorialspoint> CREATE TABLE data3 (name text PRIMARY KEY, address map<timestamp, text>);
+      # Inserting Data into a Map
+            cqlsh:tutorialspoint> INSERT INTO data3 (name, address) VALUES ('robin', {'home' : 'hyderabad' , 'office' : 'Delhi' } );
+      # Updating a Map
+            cqlsh:tutorialspoint> UPDATE data3 SET address = address+{'office':'mumbai'} WHERE name = 'robin';
+# UUIDS
+- It stands for universal-unique-identifiers.
+- It is used to generate unique id because we are using distributed systems.
+   # create table with UUID
+        cqlsh:tutorialspoint>; CREATE TABLE emp(
+   			emp_id UUID PRIMARY KEY,
+   			emp_name text,
+   			emp_city text,
+   			emp_phone int
+   		);
+   # insert the data into UUID
+        INSERT INTO emp (emp_id,emp_name, emp_city,emp_phone) VALUES (uuid(),'robin', 'vizag',8125468880);
 # How to use these commands by Java API:
 # Dependencies For Maven
 	<dependency>
