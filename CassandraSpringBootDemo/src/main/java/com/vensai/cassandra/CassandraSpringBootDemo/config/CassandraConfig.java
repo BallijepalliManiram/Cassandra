@@ -11,11 +11,11 @@ import org.springframework.data.cassandra.core.cql.keyspace.DropKeyspaceSpecific
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration 
-@EnableCassandraRepositories(basePackages = "com.vensai.cassandra.CassandraSpringBootDemo.repository")
+//@EnableCassandraRepositories(basePackages = "com.vensai.cassandra.CassandraSpringBootDemo.repository")
 public class CassandraConfig extends AbstractCassandraConfiguration
 {
 
-	public static final String KEYSPACE = "springboot_keyspace";
+	public static final String KEYSPACE = "test_keyspace2";
 
     @Override
     public SchemaAction getSchemaAction() {
@@ -25,7 +25,6 @@ public class CassandraConfig extends AbstractCassandraConfiguration
     @Override
     protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
         CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(KEYSPACE);
-
         return Arrays.asList(specification);
     }
 
@@ -44,8 +43,8 @@ public class CassandraConfig extends AbstractCassandraConfiguration
     	return "datacenter1";
     }
 
-    @Override
+    /*@Override
     public String[] getEntityBasePackages() {
-        return new String[]{"guru.springframework.domain"};
-    }
+        return new String[]{"com.vensai.cassandra.CassandraSpringBootDemo.domain"};
+    }*/
 }

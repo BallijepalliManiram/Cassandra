@@ -28,8 +28,8 @@ public class ProductDetailsController {
 	
 	@PostMapping("/product")
 	public ProductDetails saveProduct(@RequestBody ProductDetails details) {
-		detailsService.addProduct(details);
-		return details;
+		//detailsService.addProduct(details);
+		return detailsService.addProduct(details);
 	}
 	
 	@GetMapping("/product/list/{id}")
